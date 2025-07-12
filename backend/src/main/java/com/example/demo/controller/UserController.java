@@ -43,7 +43,7 @@ public class UserController {
 	    response.put("role", user.getUserType().getRoleName());
 
 	    return ResponseEntity.ok(response); 
-		system.out.println("fddf");// 200 OK + token + role
+		// 200 OK + token + role
 	}
 
 }
