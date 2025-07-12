@@ -1,0 +1,33 @@
+*{
+  overflow-y: scroll;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+::-webkit-scrollbar {
+  width: 0px;
+  background: transparent;
+  display: none;
+}
+.skill-gap-box {
+  background-color: #f8f9fa;
+  margin-top: 15px;
+  padding: 24px 32px;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  height: calc(100vh - 110px); /* Assuming header height is 80px */
+  max-width: 100%;
+  box-sizing: border-box;
+  overflow-y: scroll;
+}
+
+.skill-gap-box h3 {
+  margin-top: 0;
+  font-size: 1.5rem;
+  color: #2c3e50;
+  margin-bottom: 10px;
+}
+
+.skill-gap-box p {
+  font-size: 1rem;
+  color: #555;
+}

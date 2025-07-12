@@ -1,0 +1,64 @@
+.training-container {
+    margin-left: 20px;
+    padding: 20px 30px;
+    background-color: #f8f9fa;
+    height: calc(100vh - 80px);
+    overflow-y: auto;
+    border: #f4faff 0.001px solid;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .training-container h2 {
+    font-size: 1.8rem;
+    margin-bottom: 20px;
+    color: #2c3e50;
+  }
+  
+  .training-cards {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+  }
+  
+  .training-card {
+    background: #ffffff;
+    padding: 20px;
+    border-radius: 10px;
+    width: 280px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s ease;
+  }
+  
+  .training-card:hover {
+    transform: translateY(-4px);
+  }
+  
+  .training-card h3 {
+    margin: 0 0 10px;
+    font-size: 1.2rem;
+    color: #2c3e50;
+  }
+  
+  .training-card p {
+    font-size: 0.95rem;
+    color: #34495e;
+  }
+  
+  .training-card a {
+    display: inline-block;
+    margin-top: 10px;
+    text-decoration: none;
+    color: #3498db;
+    font-weight: 500;
+  }
+  
+  .training-card a:hover {
+    text-decoration: underline;
+  }
+  
+  .highlighted {
+    border: 2px solid #3498db;
+    background-color: #ecf6fd;
+  }
+  

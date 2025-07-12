@@ -1,0 +1,17 @@
+.student-page-layout {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+
+.student-page-body {
+  display: flex;
+  flex: 1;
+  height: calc(100% - 60px); /* assuming header is 60px */
+}
+
+.student-main-content {
+  flex: 1;
+  padding: 1.5rem;
+  overflow-y: auto;
+}

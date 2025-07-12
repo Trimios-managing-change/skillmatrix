@@ -1,0 +1,66 @@
+.student-sidebar {
+  width: 220px;
+  background: #ecf0f1;
+  padding: 20px 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: calc(100vh - 60px); /* Adjusted to remove margin overflow */
+  position: fixed;
+  top: 60px;
+  left: 0;
+  margin-top: 10px;
+  box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+  overflow-y: auto; /* Add scrolling if content overflows */
+  box-sizing: border-box;
+}
+
+
+.sidebar-nav,
+.sidebar-footer {
+  display: flex;
+  flex-direction: column;
+}
+
+.sidebar-nav a,
+.sidebar-footer a {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 16px;
+  margin-bottom: 10px;
+  border-radius: 6px;
+  font-size: 1rem;
+  color: #2c3e50;
+  font-weight: 500;
+  text-decoration: none;
+  transition: background 0.3s ease, color 0.3s ease;
+}
+
+.sidebar-nav a:hover,
+.sidebar-footer a:hover {
+  background-color: #d6eaf8;
+  color: #2980b9;
+}
+
+.sidebar-nav a.active,
+.sidebar-footer a.active {
+  background-color: #3498db;
+  color: white;
+}
+
+.sidebar-nav a.active svg,
+.sidebar-footer a.active svg {
+  color: white;
+}
+
+.sidebar-footer {
+  margin-top: auto;
+}
+
+/* Optional: To style icons */
+.sidebar-nav svg,
+.sidebar-footer svg {
+  font-size: 1.1rem;
+  transition: color 0.3s ease;
+}

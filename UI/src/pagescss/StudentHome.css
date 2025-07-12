@@ -1,0 +1,22 @@
+
+.student-home-container {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+  }
+  
+  .student-home-content {
+    display: flex;
+    flex: 1;
+    margin-top: 80px; /* Assuming header height is 80px */
+  }
+  
+  .student-main-area {
+    margin-left: 220px; /* Same as sidebar width */
+    padding: 5px 20px 5px 20px;
+    flex: 1;
+    background-color: #f8f9fa;
+    overflow-y: none; /* Disable vertical scroll */
+    height: calc(100vh - 90px); /* Assuming header height is 80px */
+  }
+  
