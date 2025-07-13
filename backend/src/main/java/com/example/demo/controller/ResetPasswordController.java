@@ -55,7 +55,7 @@ public class ResetPasswordController {
         String email = jwtUtil.extractEmail(token);
 
         if (email == null) {
-            return ResponseEntity.badRequest().body("Invalid token.");
+            return ResponseEntity.badRequest().body("Invalid tokensss.");
         }
 
         Users user = userRepository.findByEmail(email);
