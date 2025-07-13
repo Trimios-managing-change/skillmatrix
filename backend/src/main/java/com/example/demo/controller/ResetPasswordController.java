@@ -55,7 +55,7 @@ public class ResetPasswordController {
         String email = jwtUtil.extractEmail(token);
 
         if (email == null) {
-            return ResponseEntity.badRequest().body("Invalid.");
+            return ResponseEntity.badRequest().body("Invalidsgit");
         }
 
         Users user = userRepository.findByEmail(email);
