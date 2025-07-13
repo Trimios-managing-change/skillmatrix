@@ -24,7 +24,7 @@ const LandingPage = () => {
       <section className="overview">
         <h2>How Skill Matrix Works</h2>
         <div className="overview-cards">
-          <div className="card">👨‍🎓 Students apply for internships</div>
+          <div className="card">👨‍🎓 Student's will apply for internships</div>
           <div className="card">💼 Jobseekers apply for jobs</div>
           <div className="card">🧑‍🏫 SMEs evaluate and verify skills</div>
           <div className="card">🏢 Employers hire verified candidates</div>

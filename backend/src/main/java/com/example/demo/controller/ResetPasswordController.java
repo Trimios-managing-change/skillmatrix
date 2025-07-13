@@ -55,12 +55,20 @@ public class ResetPasswordController {
         String email = jwtUtil.extractEmail(token);
 
         if (email == null) {
+<<<<<<< HEAD
             return ResponseEntity.badRequest().body("Invalid tokensss.");
+=======
+            return ResponseEntity.badRequest().body("Invalid");
+>>>>>>> 76104f7e92bf45698ae55ceb273711f64ac37fba
         }
 
         Users user = userRepository.findByEmail(email);
         if (user == null) {
-            return ResponseEntity.badRequest().body("User not found.");
+<<<<<<< HEAD
+            return ResponseEntity.badRequest().body("User");
+=======
+            return ResponseEntity.badRequest().body("Users not found.");
+>>>>>>> a0dde1bf59ce79938ff3cbacf43a48dba9f67de4
         }
 
         // Hash the new password before saving
