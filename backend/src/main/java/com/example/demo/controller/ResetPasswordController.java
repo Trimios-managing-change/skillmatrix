@@ -55,12 +55,12 @@ public class ResetPasswordController {
         String email = jwtUtil.extractEmail(token);
 
         if (email == null) {
-            return ResponseEntity.badRequest().body("Invalidsgit");
+            return ResponseEntity.badRequest().body("Invalid");
         }
 
         Users user = userRepository.findByEmail(email);
         if (user == null) {
-            return ResponseEntity.badRequest().body("User not found.");
+            return ResponseEntity.badRequest().body("User");
         }
 
         // Hash the new password before saving
