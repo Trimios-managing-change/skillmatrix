@@ -1,8 +1,5 @@
 package com.example.demo.controller;
 
-
-
-
 import java.time.LocalDateTime;
 import java.util.HashMap;
 import java.util.Map;
@@ -33,26 +30,24 @@ public class ResetPasswordController {
 
     @Autowired
     private JWTService jwtUtil;
-    
+
     @Autowired
     private EmailService emailService;
-    
-    
+
     @Autowired
     private OtpTokenRepository otpTokenRepository;
 
     @Autowired
     private JWTService jwtService;
-    
+
     @Autowired
     private UserRepo userRepo;
-   
 
-    private BCryptPasswordEncoder encoder =new BCryptPasswordEncoder();
+    private BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
 
     @PutMapping("/reset-password")
-    public ResponseEntity<String> resetPassword(@RequestBody ResetPasswordRequest request, 
-                                                @RequestHeader("Authorization") String token) {
+    public ResponseEntity<String> resetPassword(@RequestBody ResetPasswordRequest request,
+            @RequestHeader("Authorization") String token) {
         if (token.startsWith("Bearer ")) {
             token = token.substring(7); // Remove "Bearer "
         }
@@ -72,32 +67,31 @@ public class ResetPasswordController {
         user.setPassword(encoder.encode(request.getNewPassword())); // Fix: Use request's new password
         userRepository.save(user);
 
-        return ResponseEntity.ok("Password reset successful.");
+        return ResponseEntity.ok("Passwordsgi reset successful.");
     }
 
     @PostMapping("/verify-otp")
-    public Map<String,String> verifyOtp(@RequestBody OtpVerificationRequest request) {
- 	   
-	      Map<String, String> response = new HashMap<>();
-        OtpToken otpToken = otpTokenRepository.findByOtp(request.getOtp());     
-        //Users us= userRepo.findByUsername(request.getEmail());
+    public Map<String, String> verifyOtp(@RequestBody OtpVerificationRequest request) {
 
-//////        if (otpToken == null || !otpToken.getOtp().equals(request.getOtp())) {
-//////            return ResponseEntity.badRequest().body("Invalid OTP.");
-//////        }
-//////       
-//////        if (otpToken.getExpirationTime().isBefore(LocalDateTime.now())) 
-//////            return ResponseEntity.badRequest().body("OTP expired.");
-//////        }
-//
-//        // Generate short-span JWT token (valid for 10 minutes)
-//        
-        String token = jwtService.generateShortLivedToken(otpToken.getEmail(),10);
-	      
-	      response.put("token", token);
-	      return response;
+        Map<String, String> response = new HashMap<>();
+        OtpToken otpToken = otpTokenRepository.findByOtp(request.getOtp());
+        // Users us= userRepo.findByUsername(request.getEmail());
 
-      
+        ////// if (otpToken == null || !otpToken.getOtp().equals(request.getOtp())) {
+        ////// return ResponseEntity.badRequest().body("Invalid OTP.");
+        ////// }
+        //////
+        ////// if (otpToken.getExpirationTime().isBefore(LocalDateTime.now()))
+        ////// return ResponseEntity.badRequest().body("OTP expired.");
+        ////// }
+        //
+        // // Generate short-span JWT token (valid for 10 minutes)
+        //
+        String token = jwtService.generateShortLivedToken(otpToken.getEmail(), 10);
+
+        response.put("token", token);
+        return response;
+
     }
 
     @PostMapping("/forgot-password")
@@ -118,16 +112,14 @@ public class ResetPasswordController {
         emailService.sendOtpEmail(user.getEmail(), otp);
 
         // Generate short-lived token
-        //String token = jwt.generateShortLivedToken(otpToken.getEmail(), 10);
+        // String token = jwt.generateShortLivedToken(otpToken.getEmail(), 10);
 
         // Create a response map
         Map<String, String> response = new HashMap<>();
-       
-        //response.put("token", token);
+
+        // response.put("token", token);
 
         return ResponseEntity.ok(response);
     }
 
-
-    }
-
+}

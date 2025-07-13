@@ -1,7 +1,5 @@
 package com.example.demo.DTO;
 
-
-
 import java.util.List;
 
 public class RoleRequestDTO {
@@ -25,4 +23,3 @@ public class RoleRequestDTO {
         this.skills = skills;
     }
 }
-
