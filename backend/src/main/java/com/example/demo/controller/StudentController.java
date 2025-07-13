@@ -27,60 +27,52 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.*;
 
-
 @RestController
 @RequestMapping("/api/student")
 public class StudentController {
 
     @Autowired
     private UserProfileService profileService;
-    
-    
-    
-    @Autowired 
+
+    @Autowired
     private UserRepo us;
-    
+
     @Autowired
     private RoleService roleService;
 
     @Autowired
     private SkillAssessmentService assessmentService; // Injecting the missing service
-    
+
     @Autowired
     private UserProfileRepository upr;
-    
 
     // Submit user profile details
-    
-    
-    
 
     @PostMapping("/save")
     public ResponseEntity<Map<String, String>> saveUserProfile(@RequestBody UserDetailsDTO dto) {
-    	Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-	    String email = auth.getName();
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        String email = auth.getName();
 
         profileService.saveUserProfile(email, dto);
         Map<String, String> response = new HashMap<>();
-        response.put("message", "Profile saved successfully.");
+        response.put("message", "Profile  successfully.");
         return ResponseEntity.ok(response);
     }
 
     @GetMapping("/get")
     public ResponseEntity<UserDetailsDTO> getUserProfile() {
-    	Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-	    String email = auth.getName();
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        String email = auth.getName();
 
         UserDetailsDTO userProfile = profileService.getUserProfile(email);
         return ResponseEntity.ok(userProfile);
     }
-    
-    
+
     @GetMapping("/home")
     public ResponseEntity<?> getUserDetails() {
         // Email is the username in your system
-    	Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-	    String email = auth.getName();
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        String email = auth.getName();
 
         Users user = us.findByEmail(email);
         if (user == null) {
@@ -91,8 +83,6 @@ public class StudentController {
 
         return ResponseEntity.ok(response);
     }
-    
-   
 
     // Endpoint to create a new role with associated skills
     @PostMapping
@@ -146,9 +136,9 @@ public class StudentController {
         String email = auth.getName();
 
         // Check if the user's profile is submitted
-         UserProfile is = upr.findByEmail(email);
+        UserProfile is = upr.findByEmail(email);
 
-        if (is==null) {
+        if (is == null) {
             // Return an error response if the profile is not submitted
             Map<String, Object> errorResponse = new HashMap<>();
             errorResponse.put("status", false);
@@ -165,6 +155,7 @@ public class StudentController {
             return ResponseEntity.badRequest().body(response);
         }
     }
+
     @PostMapping("/submit-to-sme")
     public ResponseEntity<Map<String, Object>> submitToSME(@RequestBody SkillAssessmentSMEDTO dto) {
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
@@ -179,20 +170,18 @@ public class StudentController {
             return ResponseEntity.badRequest().body(response);
         }
     }
-    
-    
+
     @Autowired
     private SkillAssessmentService skillAssessmentService;
 
     @GetMapping("/unverified")
     public ResponseEntity<Map<String, Object>> getUnverifiedSkills(@RequestParam String roleName) {
-    	 Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-         String email = auth.getName();
-    	
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        String email = auth.getName();
+
         Map<String, Object> response = skillAssessmentService.getAllSkillsWithVerificationStatus(email, roleName);
         return ResponseEntity.ok(response);
     }
-
 
     @Autowired
     private SkillResourceRepository skillResourceRepository;
@@ -202,13 +191,5 @@ public class StudentController {
         List<SkillResource> savedSkills = skillResourceRepository.saveAll(skillResources);
         return ResponseEntity.ok(savedSkills);
 
-   
-  
-    
-   
-
-   
-
-    
-}
+    }
 }
