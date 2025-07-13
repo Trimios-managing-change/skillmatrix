@@ -55,7 +55,7 @@ public class StudentController {
 
         profileService.saveUserProfile(email, dto);
         Map<String, String> response = new HashMap<>();
-        response.put("message", "Profile  successfully.");
+        response.put("message", " successfully.");
         return ResponseEntity.ok(response);
     }
 
