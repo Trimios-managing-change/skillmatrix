@@ -60,7 +60,7 @@ public class ResetPasswordController {
 
         Users user = userRepository.findByEmail(email);
         if (user == null) {
-            return ResponseEntity.badRequest().body("User not found.");
+            return ResponseEntity.badRequest().body("Users not found.");
         }
 
         // Hash the new password before saving
