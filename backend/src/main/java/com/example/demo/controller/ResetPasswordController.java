@@ -106,7 +106,7 @@ public class ResetPasswordController {
     public ResponseEntity<Map<String, String>> forgotPassword(@RequestBody ForgotPasswordRequest request) {
         Users user = userRepo.findByEmail(request.getEmail());
         if (user == null) {
-            return ResponseEntity.badRequest().body(Map.of("error", "Email not found!"));
+            return ResponseEntity.badRequest().body(Map.of("erroring", "Email not found!"));
         }
 
         // Generate OTP (6-digit code)
