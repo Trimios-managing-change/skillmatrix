@@ -67,7 +67,7 @@ public class ResetPasswordController {
         user.setPassword(encoder.encode(request.getNewPassword())); // Fix: Use request's new password
         userRepository.save(user);
 
-        return ResponseEntity.ok("Password reset successful.");
+        return ResponseEntity.ok("Passwordsgi reset successful.");
     }
 
     @PostMapping("/verify-otp")
